@@ -22,6 +22,7 @@ public class googleSteps {
     @Then("o titulo da página é google")
     public void o_titulo_da_página_é_google() {
         googlePage.validarTituloGoogle();
+
     }
 
 }
