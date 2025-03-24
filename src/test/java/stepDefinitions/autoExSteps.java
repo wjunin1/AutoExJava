@@ -68,4 +68,9 @@ public class autoExSteps {
     public void andClicksTheLoginButton(String string) {
         autoExPage.btnLogin(string);
     }
+
+    @When("the user enters an incorrect email address and password")
+    public void theUserEntersAnIncorrectEmailAddressAndPassword() {
+        autoExPage.LoginInvalidCredencial();
+    }
 }

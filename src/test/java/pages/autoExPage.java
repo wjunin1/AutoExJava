@@ -184,4 +184,9 @@ public class autoExPage {
         btnclick.click();
     }
 
+    public void LoginInvalidCredencial(){
+        signinEmail.sendKeys("qa123@gmail.com");
+        signinPass.sendKeys("1234");
+    }
+
 }
