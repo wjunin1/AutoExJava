@@ -24,6 +24,8 @@ public class autoExPage {
     String randomEmail = Utils.generateRandomEmail();
     String nome = "Teste";
     String senha = "123456";
+    String emailCriado = "fixo@teste.com";
+    String senhaCriado = "jr2311";
 
 
     @FindBy(xpath = "//a[contains(text(), 'Signup / Login')]")
@@ -114,7 +116,7 @@ public class autoExPage {
     public void validarHome() {
         String titulo = "Automation Exercise";
         String tituloAtual = driver.getTitle();
-        assertEquals(tituloAtual, titulo);
+        assertEquals(titulo, tituloAtual);
         System.out.println("Home Automation Exercise confirmada");
         try {
             ScreenshotUtils.takeScreenshot(driver);
@@ -227,8 +229,8 @@ public class autoExPage {
     }
 
     public void loginCredencials() {
-        signinEmail.sendKeys("fixo@teste.com");
-        signinPass.sendKeys("jr2311");
+        signinEmail.sendKeys(emailCriado);
+        signinPass.sendKeys(senhaCriado);
         System.out.println("Preenchido email e senha");
         try {
             ScreenshotUtils.takeScreenshot(driver);
@@ -248,11 +250,11 @@ public class autoExPage {
         }
     }
 
-    public void LoginInvalidCredencial() {
-        signinEmail.sendKeys("qa123@gmail.com");
-        signinPass.sendKeys("1234");
-        System.out.println("Login inválido");
+    public void loginInvalidCredencial() {
         try {
+            signinEmail.sendKeys("qa123@gmail.com");
+            signinPass.sendKeys("1234");
+            System.out.println("Login inválido");
             ScreenshotUtils.takeScreenshot(driver);
         } catch (Exception e) {
             System.err.println("Erro ao capturar screenshot: " + e.getMessage());
@@ -262,12 +264,25 @@ public class autoExPage {
     public void validarLoginPage() {
         String titulo = "Automation Exercise - Signup / Login";
         String tituloAtual = driver.getTitle();
-        assertEquals(tituloAtual, titulo);
-        System.out.println("Tela de login");
         try {
+            assertEquals(titulo, tituloAtual);
+            System.out.println("Tela de login");
             ScreenshotUtils.takeScreenshot(driver);
         } catch (Exception e) {
             System.err.println("Erro ao capturar screenshot: " + e.getMessage());
         }
     }
+
+    public void loginCredenciaisValidas() {
+        wait.until(ExpectedConditions.elementToBeClickable(signupName));
+        try {
+            signupName.sendKeys(nome);
+            signupEmail.sendKeys(emailCriado);
+            System.out.println("Email " + emailCriado + " e nome " + nome + " digitados");
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
+    }
+
 }

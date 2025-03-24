@@ -8,8 +8,6 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pages.autoExPage;
 
-import static org.junit.Assert.assertEquals;
-
 public class autoExSteps {
 
     WebDriver driver = DriverManager.getDriver();
@@ -71,11 +69,17 @@ public class autoExSteps {
 
     @When("the user enters an incorrect email address and password")
     public void theUserEntersAnIncorrectEmailAddressAndPassword() {
-        autoExPage.LoginInvalidCredencial();
+        autoExPage.loginInvalidCredencial();
     }
 
     @Then("the user should be redirected to the login page")
     public void theUserShouldBeRedirectedToTheLoginPage() {
         autoExPage.validarLoginPage();
+    }
+
+    @When("the user enters a name and an already registered email address")
+    public void theUserEntersANameAndAnAlreadyRegisteredEmailAddress() {
+        autoExPage.loginCredenciaisValidas();
+
     }
 }
