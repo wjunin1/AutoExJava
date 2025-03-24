@@ -1,4 +1,4 @@
-Feature: User Registration
+Feature: Automation Pratice
 
   Scenario: Register new user successfully and delete account
     Given the user navigates to the URL 'http://automationexercise.com'

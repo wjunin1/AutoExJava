@@ -30,6 +30,14 @@ public class autoExPage {
     private WebElement botaoSignupLogin;
 
     //tela de signin signup
+    @FindBy(xpath = "//input[@data-qa='login-email']")
+    private WebElement signinEmail;
+
+    @FindBy(xpath = "//input[@data-qa='login-password']")
+    private WebElement signinPass;
+
+    @FindBy(xpath = "//input[@data-qa='login-button']")
+    private WebElement signinBtn;
 
     @FindBy(xpath = "//input[@data-qa='signup-name']")
     private WebElement signupName;
@@ -164,6 +172,16 @@ public class autoExPage {
 
     public void btnCreate() {
         createAccountButton.click();
+    }
+
+    public void loginCredencials(){
+        signinEmail.sendKeys("fixo@teste.com");
+        signinPass.sendKeys("jr2311");
+    }
+
+    public void btnLogin(String btn){
+        WebElement btnclick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'" + btn + "')]")));
+        btnclick.click();
     }
 
 }

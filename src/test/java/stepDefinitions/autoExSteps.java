@@ -59,4 +59,13 @@ public class autoExSteps {
         autoExPage.btnCreate();
     }
 
+    @When("the user enters a correct email address and password")
+    public void theUserEntersACorrectEmailAddressAndPassword() {
+        autoExPage.loginCredencials();
+    }
+
+    @And("And clicks the {string} button")
+    public void andClicksTheLoginButton(String string) {
+        autoExPage.btnLogin(string);
+    }
 }
