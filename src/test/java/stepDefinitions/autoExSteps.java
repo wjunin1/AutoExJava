@@ -51,7 +51,7 @@ public class autoExSteps {
     }
     @When("fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number")
     public void fills_in_the_details_first_name_last_name_company_address_address2_country_state_city_zipcode_mobile_number() {
-        autoExPage.cadastroNovoAdress();
+        autoExPage.cadastroNovoAddress();
     }
 
     @And("clicks the Create Account button")
@@ -72,5 +72,10 @@ public class autoExSteps {
     @When("the user enters an incorrect email address and password")
     public void theUserEntersAnIncorrectEmailAddressAndPassword() {
         autoExPage.LoginInvalidCredencial();
+    }
+
+    @Then("the user should be redirected to the login page")
+    public void theUserShouldBeRedirectedToTheLoginPage() {
+        autoExPage.validarLoginPage();
     }
 }

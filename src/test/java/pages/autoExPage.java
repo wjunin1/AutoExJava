@@ -115,17 +115,35 @@ public class autoExPage {
         String titulo = "Automation Exercise";
         String tituloAtual = driver.getTitle();
         assertEquals(tituloAtual, titulo);
+        System.out.println("Home Automation Exercise confirmada");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
     public void btnClick(String elemento) {
         WebElement btnclick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'" + elemento + "')]")));
         btnclick.click();
+        System.out.println("Click realizado no botão " + elemento);
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
     public void visibleField(String campoVisivel) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'" + campoVisivel + "')]")));
         assertTrue(driver.findElement(By.xpath("//*[contains(text(),'" + campoVisivel + "')]")).isDisplayed());
         ////*[contains(text(), 'value')]
+        System.out.println("Campo visível = " + campoVisivel);
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
     public void preencherNomeEmail() {
@@ -133,11 +151,23 @@ public class autoExPage {
         signupName.sendKeys(nome);
         signupEmail.sendKeys(randomEmail);
         System.out.println(randomEmail);
+        System.out.println("Email " + randomEmail + " e nome " + nome + " digitados");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
     public void clickSignupButton() {
         wait.until(ExpectedConditions.elementToBeClickable(signupButton));
         signupButton.click();
+        System.out.println("Click no botão " + signupButton);
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
     public void cadastroNovo() {
@@ -149,16 +179,26 @@ public class autoExPage {
         daysDropdown.selectByValue("15");
         monthDropdown.selectByValue("4");
         yearDropdown.selectByValue("1989");
-        ScreenshotUtils.takeScreenshot(driver);
+        System.out.println("Campos preenchidos");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
     public void selectCheckbox(String checkboxName) {
         WebElement checkbox = driver.findElement(By.xpath("//label[contains(text(), '" + checkboxName + "')]"));
         checkbox.click();
-        ScreenshotUtils.takeScreenshot(driver);
+        System.out.println("Checkbox marcado");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
-    public void cadastroNovoAdress() {
+    public void cadastroNovoAddress() {
         Select country = new Select(cadastroCountry);
         cadastroFirstName.sendKeys("TesteQA");
         cadastroLastName.sendKeys("Silva");
@@ -168,25 +208,66 @@ public class autoExPage {
         cadastroCity.sendKeys("Washington");
         cadastroZipcode.sendKeys("71963000");
         cadastroMobileNumber.sendKeys("5561987344433");
+        System.out.println("Campos de address preenchidos");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
     public void btnCreate() {
         createAccountButton.click();
+        System.out.println("Conta criada");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
-    public void loginCredencials(){
+    public void loginCredencials() {
         signinEmail.sendKeys("fixo@teste.com");
         signinPass.sendKeys("jr2311");
+        System.out.println("Preenchido email e senha");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
-    public void btnLogin(String btn){
+    public void btnLogin(String btn) {
         WebElement btnclick = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'" + btn + "')]")));
         btnclick.click();
+        System.out.println("Btn de login");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
-    public void LoginInvalidCredencial(){
+    public void LoginInvalidCredencial() {
         signinEmail.sendKeys("qa123@gmail.com");
         signinPass.sendKeys("1234");
+        System.out.println("Login inválido");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
     }
 
+    public void validarLoginPage() {
+        String titulo = "Automation Exercise - Signup / Login";
+        String tituloAtual = driver.getTitle();
+        assertEquals(tituloAtual, titulo);
+        System.out.println("Tela de login");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
+    }
 }
