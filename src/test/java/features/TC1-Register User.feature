@@ -13,9 +13,9 @@ Feature: User Registration
     And selects the checkbox 'Receive special offers from our partners!'
     And fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
     And clicks the Create Account button
-    Then 'ACCOUNT CREATED!' should be displayed
+    Then 'Account Created!' should be displayed
     When the user clicks the 'Continue' button
-    Then 'Logged in as username' should be displayed
+    Then 'Logged in as ' should be displayed
     When the user clicks the 'Delete Account' button
-    Then 'ACCOUNT DELETED!' should be displayed
+    Then 'Account Deleted!' should be displayed
     And the user clicks the 'Continue' button

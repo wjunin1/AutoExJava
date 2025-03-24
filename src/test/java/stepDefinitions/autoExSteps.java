@@ -25,7 +25,7 @@ public class autoExSteps {
     }
     @When("the user clicks the {string} button")
     public void the_user_clicks_the_button(String string) {
-        autoExPage.navegarSign();
+        autoExPage.btnClick(string);
     }
     @Then("{string} should be displayed")
     public void should_be_displayed(String string) {
@@ -47,18 +47,16 @@ public class autoExSteps {
     }
     @When("selects the checkbox {string}")
     public void selects_the_checkbox(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        autoExPage.selectCheckbox(string);
     }
     @When("fills in the details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number")
     public void fills_in_the_details_first_name_last_name_company_address_address2_country_state_city_zipcode_mobile_number() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        autoExPage.cadastroNovoAdress();
     }
 
     @And("clicks the Create Account button")
     public void clicksTheCreateAccountButton() {
+        autoExPage.btnCreate();
     }
-
 
 }
