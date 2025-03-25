@@ -1,0 +1,119 @@
+Feature: Automation Exercise Tests
+
+  Scenario: Verify Subscription in Cart page
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    Then the home page should be visible successfully
+    When the user clicks the 'Cart' button
+    And scrolls down to footer
+    Then 'SUBSCRIPTION' should be visible
+    When the user enters an email address in input and clicks the arrow button
+    Then 'You have been successfully subscribed!' should be visible
+
+  Scenario: Add Products in Cart
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    Then the home page should be visible successfully
+    When the user clicks the 'Products' button
+    And hovers over the first product and clicks 'Add to cart'
+    And clicks the 'Continue Shopping' button
+    And hovers over the second product and clicks 'Add to cart'
+    And clicks the 'View Cart' button
+    Then both products should be added to the cart
+    And their prices, quantity, and total price should be correct
+
+  Scenario: Verify Product quantity in Cart
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    Then the home page should be visible successfully
+    When the user clicks 'View Product' for any product on the home page
+    Then the product details page should be opened
+    When the user increases quantity to 4
+    And clicks the 'Add to cart' button
+    And clicks the 'View Cart' button
+    Then the product should be displayed in the cart page with exact quantity
+
+  Scenario: Place Order - Register while Checkout
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    Then the home page should be visible successfully
+    When the user adds products to the cart
+    And clicks the 'Cart' button
+    Then the cart page should be displayed
+    When the user clicks 'Proceed To Checkout'
+    And clicks 'Register / Login' button
+    And fills all details in Signup and creates an account
+    Then 'ACCOUNT CREATED!' should be displayed
+    When the user clicks 'Continue' button
+    Then 'Logged in as username' should be displayed at the top
+    When the user clicks 'Cart' button
+    And clicks 'Proceed To Checkout' button
+    Then the Address Details and Review Order should be displayed
+    When the user enters description in comment text area and clicks 'Place Order'
+    And enters payment details
+    And clicks 'Pay and Confirm Order' button
+    Then 'Your order has been placed successfully!' should be displayed
+    When the user clicks 'Delete Account' button
+    Then 'ACCOUNT DELETED!' should be displayed
+    And the user clicks 'Continue' button
+
+  Scenario: Remove Products From Cart
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    Then the home page should be visible successfully
+    When the user adds products to the cart
+    And clicks the 'Cart' button
+    Then the cart page should be displayed
+    When the user clicks 'X' button corresponding to a particular product
+    Then the product should be removed from the cart
+
+  Scenario: View Category Products
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    Then categories should be visible on the left side bar
+    When the user clicks on 'Women' category
+    And clicks on any category link under 'Women' category
+    Then the category page should be displayed with text 'WOMEN - TOPS PRODUCTS'
+    When the user clicks on any sub-category link of 'Men' category on the left side bar
+    Then the user should be navigated to that category page
+
+  Scenario: Search Products and Verify Cart After Login
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    When the user clicks on 'Products' button
+    Then the user should be navigated to ALL PRODUCTS page successfully
+    When the user enters a product name in search input and clicks search button
+    Then 'SEARCHED PRODUCTS' should be visible
+    And all the products related to search should be visible
+    When the user adds those products to the cart
+    And clicks the 'Cart' button
+    Then the products should be visible in the cart
+    When the user clicks 'Signup / Login' button and submits login details
+    And goes to the Cart page again
+    Then those products should be visible in the cart after login as well
+
+  Scenario: Download Invoice after purchase order
+    Given the user launches the browser
+    And navigates to 'http://automationexercise.com'
+    Then the home page should be visible successfully
+    When the user adds products to the cart
+    And clicks the 'Cart' button
+    Then the cart page should be displayed
+    When the user clicks 'Proceed To Checkout'
+    And clicks 'Register / Login' button
+    And fills all details in Signup and creates an account
+    Then 'ACCOUNT CREATED!' should be displayed
+    When the user clicks 'Continue' button
+    Then 'Logged in as username' should be displayed at the top
+    When the user clicks 'Cart' button
+    And clicks 'Proceed To Checkout' button
+    Then the Address Details and Review Order should be displayed
+    When the user enters description in comment text area and clicks 'Place Order'
+    And enters payment details
+    And clicks 'Pay and Confirm Order' button
+    Then 'Your order has been placed successfully!' should be displayed
+    When the user clicks 'Download Invoice' button
+    Then the invoice should be downloaded successfully
+    When the user clicks 'Delete Account' button
+    Then 'ACCOUNT DELETED!' should be displayed
+    And the user clicks 'Continue' button

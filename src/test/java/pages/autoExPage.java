@@ -2,15 +2,15 @@ package pages;
 
 import config.ScreenshotUtils;
 import config.Utils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 
@@ -22,6 +22,8 @@ public class autoExPage {
     private WebDriverWait wait;
 
     String randomEmail = Utils.generateRandomEmail();
+    String randomName = Utils.generateRandomName();
+    String randomMessage = Utils.generateRandomMessage();
     String nome = "Teste";
     String senha = "123456";
     String emailCriado = "fixo@teste.com";
@@ -106,6 +108,27 @@ public class autoExPage {
     @FindBy(xpath = "//button[@data-qa='create-account']")
     private WebElement createAccountButton;
 
+    //Contact US
+    @FindBy(xpath = "//input[@data-qa='name']")
+    private WebElement contactUsName;
+
+    @FindBy(xpath = "//input[@data-qa='email']")
+    private WebElement contactUsEmail;
+
+    @FindBy(xpath = "//input[@data-qa='subject']")
+    private WebElement contactUsSubject;
+
+    @FindBy(xpath = "//textarea[@data-qa='message']")
+    private WebElement contactUsMessage;
+
+    @FindBy(name = "upload_file")
+    private WebElement contactUploadBtn;
+
+    @FindBy(xpath = "//textarea[@data-qa='submit-button']")
+    private WebElement contactUsSubmitBtn;
+
+    @FindBy(xpath = ("//input[contains(@value,'Submit')]"))
+    private WebElement btnsubmit;
 
     public autoExPage(WebDriver driver) {
         this.driver = driver;
@@ -285,4 +308,42 @@ public class autoExPage {
         }
     }
 
+    public void preencherDadosContact() {
+        try {
+            contactUsName.sendKeys(randomName);
+            contactUsEmail.sendKeys(randomEmail);
+            contactUsSubject.sendKeys("Suporte");
+            contactUsMessage.sendKeys(randomMessage);
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
+    }
+
+    public void uploadFile() {
+        try {
+            File file = new File("src/test/java/files/uploadFileModel.png");
+            String caminho = file.getAbsolutePath();
+            contactUploadBtn.sendKeys(caminho);
+            System.out.println("Arquivo anexado");
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
+    }
+
+    public void btnSubmit() {
+        btnsubmit.click();
+    }
+
+    public void contactAlert() {
+        Alert alert = driver.switchTo().alert();
+        String text = alert.getText();
+
+        if (text.equals("Press OK to proceed!")) {
+            alert.accept();
+        } else {
+            btnsubmit.click();
+            alert.accept();
+        }
+    }
 }

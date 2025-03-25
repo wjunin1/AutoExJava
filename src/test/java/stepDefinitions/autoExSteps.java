@@ -80,6 +80,26 @@ public class autoExSteps {
     @When("the user enters a name and an already registered email address")
     public void theUserEntersANameAndAnAlreadyRegisteredEmailAddress() {
         autoExPage.loginCredenciaisValidas();
-
     }
+
+    @When("the user fills in the contact form with name, email, subject, and message")
+    public void theUserFillsInTheContactFormWithNameEmailSubjectAndMessage() {
+        autoExPage.preencherDadosContact();
+    }
+
+    @And("uploads a file")
+    public void uploadsAFile() {
+        autoExPage.uploadFile();
+    }
+
+    @And("clicks the Submit button")
+    public void clicksTheSubmitButton() {
+        autoExPage.btnSubmit();
+    }
+
+    @And("confirms the alert")
+    public void confirmsTheAlert() {
+        autoExPage.contactAlert();
+    }
+
 }
