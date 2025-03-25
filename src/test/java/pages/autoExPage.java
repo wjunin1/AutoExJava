@@ -346,4 +346,16 @@ public class autoExPage {
             alert.accept();
         }
     }
+
+    public void testCasePage() {
+        String titulo = "Automation Practice Website for UI Testing - Test Cases";
+        String tituloAtual = driver.getTitle();
+        assertEquals(titulo, tituloAtual);
+        System.out.println("Test Cases Page confirmada");
+        try {
+            ScreenshotUtils.takeScreenshot(driver);
+        } catch (Exception e) {
+            System.err.println("Erro ao capturar screenshot: " + e.getMessage());
+        }
+    }
 }

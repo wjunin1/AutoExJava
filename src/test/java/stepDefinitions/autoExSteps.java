@@ -102,4 +102,8 @@ public class autoExSteps {
         autoExPage.contactAlert();
     }
 
+    @Then("the user should be redirected to the Test Cases page successfully")
+    public void theUserShouldBeRedirectedToTheTestCasesPageSuccessfully() {
+        autoExPage.testCasePage();
+    }
 }

@@ -14,14 +14,12 @@ public class ScreenshotUtils {
     private static final Logger logger = Logger.getLogger(ScreenshotUtils.class.getName());
 
     public static void takeScreenshot(WebDriver driver) {
-        // Obtém o nome do método chamador automaticamente
         String callerMethodName = getCallingMethodName();
         takeScreenshot(driver, callerMethodName);
     }
 
     public static void takeScreenshot(WebDriver driver, String fileName) {
         try {
-            // Gera um timestamp para evitar sobrescritas
             String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
 
             // Diretório onde os screenshots serão armazenados
@@ -49,8 +47,8 @@ public class ScreenshotUtils {
     }
 
     private static String getCallingMethodName() {
-        // Captura o nome do método chamador
+        // Captura o nome do metodo chamador
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        return stackTrace[3].getMethodName(); // Obtém o método anterior ao takeScreenshot()
+        return stackTrace[3].getMethodName(); // Obtém o metodo anterior ao takeScreenshot()
     }
 }
